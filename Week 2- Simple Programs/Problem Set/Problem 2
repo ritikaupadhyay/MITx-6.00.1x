@@ -16,3 +16,25 @@
 
 balance = int(input("Enter balance: "))
 annualInterestRate = float(input("Enter annual interest rate: "))
+
+def calc_minPayment(bal, annualRate, minPayment=10.0, numOfMonths=12):
+    
+    monthlyIntRate = annualRate/12.0
+    minPayment = 0.0
+    init_bal = bal
+    
+    while bal > 0:
+            for i in range(12):
+                #Each month, my new balance becomes prev balance minus the min payment plus the interest accrued on the new balance after payment is made
+                init_bal = init_bal - minPayment + ((init_bal - minPayment) * monthlyIntRate)
+                
+                #we have the annual balance that needs to be met by a min monthly payment in init_bal
+                
+                if bal > 0: #if balance is unpaid, try increasing min monthly payment by $10 as per problem statement, reset bal to initial value so we try again
+                    minPayment+=10.0
+                    init_bal = bal
+                    
+                elif bal <= 0:
+                    break
+                
+    print('Lowest Payment: ', minPayment)
