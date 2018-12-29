@@ -1,0 +1,24 @@
+#Checking if a given string is a palindrome using recursion
+
+import regex as re
+
+def remove_punctuation(text):
+    return re.sub(r"\p{P}+","",text)
+
+def palin_check(st):
+    
+    
+    st=st.lower()
+    print(st)
+#enter=input("Press Enter to continue")
+    st = remove_punctuation(st)
+
+    if len(st)==0 or len(st)==1:
+            return True
+        
+    else:
+        return st[0]==st[-1] and palin_check(st[1:-1])
+
+st="Able was I, ere I saw Elba"
+
+print(palin_check(st))        
