@@ -1,0 +1,35 @@
+#Below are some short Python programs. For each program, answer the associated question.
+#
+#Try to answer the questions without running the code. Check your answers, then run the code for the ones you get wrong.
+
+num = 10
+for num in range(5):
+    print(num)
+print(num)
+#10
+
+    
+divisor = 2
+for num in range(0, 10, 2):
+    print(num/divisor) 
+#01234
+    
+for variable in range(20):
+    if variable % 4 == 0:
+        print(variable)
+    if variable % 16 == 0:
+        print('Foo!') 
+#0, 4, 8, 12, 16, 'Foo!'
+    
+for letter in 'hola':
+    print(letter)  
+#h,o,l,a
+    
+count = 0
+for letter in 'Snow!':
+    print('Letter # ' + str(count) + ' is ' + str(letter))
+    count += 1
+    break
+print(count)
+#Letter # 0 is S
+1
