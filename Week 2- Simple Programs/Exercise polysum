@@ -1,0 +1,17 @@
+from math import *
+
+def polysum(n, s):
+    
+    area = (0.25*n*(s**2))/tan(pi/n)
+    peri = n * s
+    periperi=peri**2
+    
+    psum = round((area+periperi), 4)
+    print("answer is: "+str(psum))
+    return psum
+
+
+
+n = int(input("Enter the number of sides for the polygon: "))
+s = int(input("Enter the length of sides for the polygon: "))
+polysum(n, s)
