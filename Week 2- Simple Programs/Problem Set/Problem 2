@@ -17,7 +17,7 @@
 balance = int(input("Enter balance: "))
 annualInterestRate = float(input("Enter annual interest rate: "))
 
-def calc_minPayment(bal, annualRate, minPayment=10.0, numOfMonths=12):
+def calc_minPayment(bal, annualRate):
     
     monthlyIntRate = annualRate/12.0
     minPayment = 0.0
