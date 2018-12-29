@@ -1,0 +1,22 @@
+# Number lies between 0  and 99. The computer makes guesses, and you give it input - is its guess too high or too low? Using bisection search, the computer will guess the user's secret number!
+
+low=0
+high=100
+ans=(high+low)/2
+
+correct='z'
+
+print('Please think of a number between 0 and 100!')
+
+while correct != 'c':
+    correct=input(" Is your secret number"+ str(ans)+"? "+"Enter 'h' to indicate the guess is too high. Enter 'l' to indicate the guess is too low. Enter 'c' to indicate I guessed correctly.")
+    if correct=='c':
+        print("Your secret number was: ",ans)
+        
+    elif correct=='h':
+        high = ans
+        ans = (high+low)/2
+        
+    elif correct=='l':
+        low = ans
+        ans = (high+low)/2
