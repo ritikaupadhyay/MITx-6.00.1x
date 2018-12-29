@@ -1,0 +1,33 @@
+#1. Convert the following into code that uses a while loop.
+#
+#print 2
+#prints 4
+#prints 6
+#prints 8
+#prints 10
+#prints Goodbye!
+
+i = 2
+
+while i < 11:
+    print(str(i)+'\n')
+    i+=2
+    
+print("Goodbye!")  
+
+
+#2. Convert the following into code that uses a while loop.
+#
+#prints Hello!
+#prints 10
+#prints 8
+#prints 6
+#prints 4
+#prints 2
+
+i = 10
+print("Hello!"+'\n')
+
+while i > 1:
+    print(str(i) +'\n')
+    i-=2
