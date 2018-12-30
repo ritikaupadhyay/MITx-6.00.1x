@@ -1,0 +1,25 @@
+#Write a procedure called oddTuples, which takes a tuple as input, and returns a new tuple as output, where every other element of the input tuple is copied, starting with the first one. So if test is the tuple ('I', 'am', 'a', 'test', 'tuple'), then evaluating oddTuples on this input would return the tuple ('I', 'a', 'tuple').
+
+
+def oddTuples (tup):
+    
+    """
+    takes a tuple as input and returns a new tuple as output.
+    In the output tuple, every other element of the input tuple is copied, starting with the first one. 
+    
+    E.g.So if test is the tuple ('I', 'am', 'a', 'test', 'tuple'), 
+    then evaluating oddTuples on this input would return the tuple ('I', 'a', 'tuple').
+    """
+    
+    outputTup=()
+    
+#for each tuple in my list of tuples
+    for t in tup:
+        if tup.index(t)%2==0:             #if the position of the element is even
+            outputTup = outputTup + (t,)   #add it to the output tuple
+
+            
+    return outputTup
+
+aTup = ('I', 'am', 'a', 'test', 'tuple')
+print(oddTuples(aTup))
