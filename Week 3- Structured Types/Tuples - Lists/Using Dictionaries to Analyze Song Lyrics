@@ -1,0 +1,87 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Dec 30 18:31:57 2018
+
+@author: ritika
+"""
+
+import regex as re
+
+E_to_F = {"bread":"pain", "wine":"vin", "with":"avec", "I":"Je", "eat":"mange", "drink":"bois", "John":"Jean"}
+E_to_F["white"] = "blanc"  
+
+def translate_word(eng_word):
+    return E_to_F[eng_word]
+
+
+translate_word("wine")
+
+################################################################
+# removing all punctuation from a string
+def remove_punctuation(text):
+    return re.sub(r"\p{P}+", "", text)
+
+#Take a string as input and take inventory of all the words in it in the form of a dictionary with word as key and frequency as value
+def lyrics_to_frequencies(lyrics):
+    myDict={}
+    
+    for word in lyrics:
+        if word in myDict:
+            myDict[word] += 1 #if the word already exists in myDict, increase frequency by 1
+            
+        else:
+            myDict[word] = 1 #else add an entry for the word with frequency 1
+            
+    return myDict
+
+#####
+
+#take a dictionary with words in string as key and their frequency as value and determine the most frequently occurring words
+def most_common_words_freq(dict):
+    
+    values = dict.values() #values in this dictionary are ints indicating word frequencies
+    best = max(values) #find max occurrence of a word in the dictionary
+    
+    words = [] #create an empty dict
+
+    #finding words with that maximum value
+    for key in dict: #for each word in the dict
+        if dict[key] == best: #if its frequency is the max
+            words.append(key) #add the word to list
+            
+    return (words, best) #return this tuple
+#####
+
+def word_often(dict, occur):
+    words = []
+    
+    for key in dict:            #for each word in the dict
+        if dict[key] == occur:  #if its frequency equals occur
+            words.append(key)   #add it to the list
+            
+    return words
+
+def words_as_often(myDict, minFreq):
+    result = []
+    done = false
+
+    while not done:
+        temp = most_common_words_freq(myDict)
+        if temp[1]>=minFreq:
+            result.append(temp)
+            for w in temp[0]:
+                del (myDict[w])
+        else:
+            done = True
+
+    return result
+
+
+lyrics = "Thought I found a way Thought I found a way, yeah (found) But you never go away (never go away) So I guess I gotta stay now Oh, I hope some day I'll make it out of here Even if it takes all night or a hundred years Need a place to hide, but I can't find one near Wanna feel alive, outside I can fight my fear Isn't it lovely, all alone? Heart made of glass, my mind of stone Tear me to pieces, skin and bone Hello, welcome home Walkin' out of town Lookin' for a better place (lookin' for a better place) Something's on my mind Always in my headspace But I know some day I'll make it out of here Even if it takes all night or a hundred years Need a place to hide, but I can't find one near Wanna feel alive, outside I can fight my fear Isn't it lovely, all alone? Heart made of glass, my mind of stone Tear me to pieces, skin and bone Hello, welcome home Woah, yeah Yeah, ah Woah, woah Hello, welcome home"
+
+lyrics = remove_punctuation(lyrics)
+lyrics = lyrics.split() 
+lyrics_to_frequencies(lyrics)
+(w, b) = most_common_words_freq(lyrics_to_frequencies(lyrics))
+
+words = word_often(lyrics_to_frequencies(lyrics), 2)
